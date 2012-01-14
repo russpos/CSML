@@ -1,0 +1,16 @@
+h1 context.title
+---
+<h1>Hello World!</h1>
+===
+h1 context.title
+ul id: 'turtles', ->
+  for turtle in context.turtles
+    li turtle
+---
+<h1>Hello World!</h1>
+<ul id="turtles">
+  <li>Leonardo</li>
+  <li>Donatello</li>
+  <li>Raphael</li>
+  <li>Michaelangelo</li>
+</ul>

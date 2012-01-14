@@ -1,0 +1,87 @@
+h1 'Hi!'
+---
+<h1>Hi!</h1>
+===
+h1 "Hello World!"
+---
+<h1>Hello World!</h1>
+===
+h1 "Hello #{b 'World'}!"
+---
+<h1>Hello <b>World</b>!</h1>
+===
+h1 "Hello World!"
+div class: 'contents', "This is the greatest!"
+---
+<h1>Hello World!</h1>
+<div class="contents">This is the greatest!</div>
+===
+h1 "Hello World!"
+div id: 'contents', ->
+  p 'Here is some nested text!'
+---
+<h1>Hello World!</h1>
+<div id="contents">
+  <p>Here is some nested text!</p>
+</div>
+===
+h1 "Hello World!"
+div id: 'contents', ->
+  p "Here is some #{em 'emphasized'} text!"
+---
+<h1>Hello World!</h1>
+<div id="contents">
+  <p>Here is some <em>emphasized</em> text!</p>
+</div>
+===
+html lang: 'en', ->
+  head ->
+    link type: 'text/css', rel: 'stylesheet', href: '/style.css'
+    script type: 'text/javascript', src: 'https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js'
+  body ->
+    h1 'Hello World!'
+    div id: 'contents', ->
+      h2 id: 'subheader', 'Welcome to my example site!'
+      p "What about a break tag?", br(), "HANNAH?"
+      p "What about a break tag?#{b('Barf!')}HANNAH?"
+      ul id: 'kids', ->
+        for num in [1..4]
+          li num
+---
+<html lang="en">
+  <head>
+    <link type="text/css" rel="stylesheet" href="/style.css">
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+  </head>
+  <body>
+    <h1>Hello World!</h1>
+    <div id="contents">
+      <h2 id="subheader">Welcome to my example site!</h2>
+      <p>What about a break tag?<br>HANNAH?</p>
+      <p>What about a break tag?<b>Barf!</b>HANNAH?</p>
+      <ul id="kids">
+        <li>1</li>
+        <li>2</li>
+        <li>3</li>
+        <li>4</li>
+      </ul>
+    </div>
+  </body>
+</html>
+===
+div id: 'sandwich', ->
+ __ 'bologna', 'I just made up a tag!'
+ bologna '...and used it again!'
+---
+<div id="sandwich">
+  <bologna>I just made up a tag!</bologna>
+  <bologna>...and used it again!</bologna>
+</div>
+===
+defineTags 'foo', 'bar', 'baz'
+foo 'I told you', ->
+  bar '...these tags are real!'
+---
+<foo>I told you
+  <bar>...these tags are real!</bar>
+</foo>
